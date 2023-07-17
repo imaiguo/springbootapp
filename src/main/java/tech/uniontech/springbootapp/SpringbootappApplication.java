@@ -4,13 +4,28 @@ import org.springframework.context.ApplicationContext;
 
 import java.util.Arrays;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.google.gson.Gson;
+
+import tech.uniontech.springbootapp.mybatis.City;
+import tech.uniontech.springbootapp.mybatis.mapper.CityMapper;
+
+
+// @MapperScan(basePackages = {"src.main.java.tech.uniontech.springbootapp.mybatis.mapper"})
+@MapperScan
 @SpringBootApplication
-public class SpringbootappApplication {
+public class SpringbootappApplication implements CommandLineRunner {
+
+	private final CityMapper cityMapper;
+	
+	public SpringbootappApplication(CityMapper cityMapper) {
+		this.cityMapper = cityMapper;
+	  }
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootappApplication.class, args);
@@ -27,10 +42,18 @@ public class SpringbootappApplication {
 			Arrays.sort(beanNames);
 
 			for (String beanName : beanNames) {
-				System.out.println(beanName);
+				beanName += beanName;
 			}
 			System.out.println("--list end--");
 		};
 	}
 
+	@Override
+	public void run(String... args) throws Exception {
+		City city = this.cityMapper.findByState("cn");
+
+		Gson json = new Gson();
+		String str = json.toJson(city);
+		System.out.println(str);
+	}
 }

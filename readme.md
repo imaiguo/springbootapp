@@ -20,8 +20,8 @@ SpringBoot依赖, Click Dependencies and select Spring Web, Spring Data JPA, and
 
 添加数据
 ```bash
-> curl http://localhost:8080/demo/add -d name=First -d email=someemail@someemailprovider.com
-> curl http://localhost:8080/demo/all
+> curl http://localhost:8000/hibernate/add -d name=First -d email=someemail@someemailprovider.com
+> curl http://localhost:8000/hibernate/all
 >
 ```
 
