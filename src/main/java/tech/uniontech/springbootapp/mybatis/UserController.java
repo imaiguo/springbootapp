@@ -1,3 +1,5 @@
+// https://zhuanlan.zhihu.com/p/160901686
+
 package tech.uniontech.springbootapp.mybatis;
 
 import java.util.List;
@@ -7,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tech.uniontech.springbootapp.mybatis.mapper.UserMapper;
-
-// 参考 https://zhuanlan.zhihu.com/p/160901686
 
 @RestController
 public class UserController {

@@ -1,7 +1,6 @@
 package tech.uniontech.springbootapp;
 
 import org.springframework.context.ApplicationContext;
-
 import java.util.Arrays;
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -12,11 +11,10 @@ import org.springframework.context.annotation.Bean;
 
 import com.google.gson.Gson;
 
+import tech.uniontech.springbootapp.log4j.hellolog4j;
 import tech.uniontech.springbootapp.mybatis.City;
 import tech.uniontech.springbootapp.mybatis.mapper.CityMapper;
 
-
-// @MapperScan(basePackages = {"src.main.java.tech.uniontech.springbootapp.mybatis.mapper"})
 @MapperScan
 @SpringBootApplication
 public class SpringbootappApplication implements CommandLineRunner {
@@ -29,6 +27,7 @@ public class SpringbootappApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootappApplication.class, args);
+
 	}
 
 	// 列举所有 创建类 和 springboot添加类
@@ -45,6 +44,8 @@ public class SpringbootappApplication implements CommandLineRunner {
 				beanName += beanName;
 			}
 			System.out.println("--list end--");
+			hellolog4j hello = new hellolog4j();
+			hello.printLog();
 		};
 	}
 
